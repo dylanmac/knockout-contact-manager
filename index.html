@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>iShares</title>
+		<link href="stylesheets/css/vendor/bootstrap.css" rel="stylesheet">
+		<link href="stylesheets/css/styles.css" rel="stylesheet">
+		<script src="js/vendor/knockout-3.3.0.js"></script>
+	</head>
+
+	<body>
+	
+		<div class="container-fluid" data-bind="event: loadData()">
+
+			<div class="row">
+				<div class="col-xs-12">
+
+					<h2>Contact Manager</h2>
+
+					<p>This is a single page application (SPA) that saves contacts you enter to local storage. The libraries used for this application are <strong>knockout.js</strong>, <strong>jquery</strong> and <strong>bootstrap</strong> for the responsive layout.</p>
+					<p>To add a contact, click the "Add a Contact" button.  To edit an existing contact, change the values in the input fields in the table and click the "Save Contacts" button.  To remove a contact, clck the "remove" link next to each contact.  To remove all contacts and delete local storage click the red "Clear All" button.</p>
+
+					<div class="form-group row">
+						<div class="col-xs-12">
+							<button class="btn btn-default" data-bind='click: addContact'>Add a Contact</button>
+						</div>
+					</div>
+
+					<div class="table-responsive" data-bind="visible: contacts().length > 0">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>First name</th>
+									<th>Last name</th>
+									<th>Phone</th>
+									<th class="email-col">Email</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody data-bind="foreach: contacts">
+								<tr>
+									<td>
+										<input data-bind='value: firstName' class="form-control" placeholder="First Name" />
+									</td>
+									<td>
+										<input data-bind='value: lastName' class="form-control" placeholder="Last Name"/>
+									</td>
+									<td>
+										<input data-bind='value: phone' class="form-control" placeholder="Phone Number" />
+									</td>
+									<td>
+										<div class="input-group">
+											<input type="text" class="form-control email-input" data-bind='value: email' placeholder="Recipient's username">
+											<span class="input-group-addon" id="basic-addon2">@email.com</span>
+										</div>
+									</td>
+									<td>
+										<a href='#' class="text-warning" data-bind='click: $root.removeContact'>remove</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+
+					<div class="form-group row" data-bind="visible: contacts().length > 0">
+						<div class="col-xs-6">
+							<button class="btn btn-danger" data-bind='click: removeAllContacts'>Clear All</button>
+						</div>
+						<div class="col-xs-6">
+							<button class="btn btn-primary pull-right" data-bind='click: saveContact'>Save Contacts</button>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			 
+		</div>
+
+		<script src="js/vendor/jquery-2.1.3.js"></script>
+		<script src="js/vendor/bootstrap.js"></script>
+		<script src="js/contactsViewModel.js"></script>
+
+	</body>
+
+</html>

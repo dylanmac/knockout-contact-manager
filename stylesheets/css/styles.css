@@ -1,0 +1,9 @@
+body {
+	margin: 50px;
+}
+.email-col {
+	width: 30%;
+}
+.input-group .email-input {
+	min-width: 100px;
+}
